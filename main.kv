@@ -1,0 +1,132 @@
+#:import hex kivy.utils.get_color_from_hex
+#:import Clipboard kivy.core.clipboard.Clipboard
+
+<MainWindow>:
+	# gli id
+	teip: teip
+	risultato: risultato
+	
+	#base
+	BoxLayout:
+		canvas.before:
+			Color:
+				rgba: hex("#292C37")
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		
+		orientation: "vertical"
+		
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: hex("#1B1D24")
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [0,0,20,20]
+			size_hint_y: .08
+			
+			Label:
+				text: "Python Password Generation"
+				color: hex("#FFA000")
+		
+		BoxLayout:
+			size_hint_y: .20
+			orientation: "vertical"
+			
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: hex("#1B1D24")
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [40,40,0,0]
+			
+			size_hint_y: .80
+			orientation: "vertical"
+			
+			
+			MDTextField:
+				id: teip
+				hint_text: ""
+				pos_hint: {"center_x": .5, "center_y": .5}
+				size_hint_x: .85
+			
+			Label:
+			
+			MDLabel:
+				id: risultato
+				text: ""
+				color: hex("#FFA500")
+				allow_selection: True
+				allow_copy: True	
+				halign: "center"
+				padding: "26dp", "26dp"
+					
+			Label:
+			
+			#Bottoni
+			BoxLayout:
+				
+				Label:
+				MDRoundFlatButton:
+					text: "Random"
+					text_color: hex("#FFA500")
+					pos_hint: {"center_x": .5, "center_y": .5}
+					size_hint: (.80,.20)
+					on_press:
+						root.random_pass()
+				
+				Label:
+					size_hint_x: .15
+					
+				MDRoundFlatButton:
+					text: "run"
+					text_color: hex("#FFA500")
+					pos_hint: {"center_x": .5, "center_y": .5}
+					size_hint: (.80,.20)
+					on_press:
+						root.slak()
+				
+				Label:
+					size_hint_x: .15
+				
+				MDRoundFlatButton:
+					text: 'Copy'
+					text_color: hex("#FFA500")
+					pos_hint: {"center_x": .5, "center_y": .5}
+					size_hint: (.80,.20)
+					on_release:
+						Clipboard.copy(risultato.text)
+				Label:
+
+			Label:
+				size_hint_y: .02
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
